@@ -8,7 +8,7 @@ A Game. There is a rocket on the center of the screen. Player control the rocket
 - Rocket可以上下左右移动
 - Rocket不能移动出Screen
 
-### 游戏运行主函数
+## 游戏运行主函数
 
 > 导入模块:
 > - pygame
@@ -47,6 +47,16 @@ A Game. There is a rocket on the center of the screen. Player control the rocket
 - 初始化rocket对象
 - 在循环中重绘rocket
 
+### 火箭移动
+
+`rocket.py`增加`move_rocket()`函数.
+
+1. 设置移动标志, 默认为False, 为True时移动
+2. 检测KEYUP/KEYDOWN事件
+    1. 如果KEYDOWN, 移动标志改为True
+    2. 如果KEYUP, 移动标志改为False
+3. 火箭移动: 移动标志为True且火箭不在边界上, 则以火箭速度进行移动
+
 ## 重构
 
 ### 第一次重构
@@ -56,7 +66,37 @@ A Game. There is a rocket on the center of the screen. Player control the rocket
     - width
     - height
     - bg_color
-2. ...
+2. 火箭速度
 
-## 火箭移动
+### 第二次重构
 
+游戏运行主函数单独拆分为文件`game_functions.py`, 包含:
+
+- `keyup_event()`
+- `keydown_event()`
+- `check_event()`
+- `blitme()`
+
+#### `keyup_event()`
+
+如果KEYDOWN, 移动标志改为True
+
+#### `keydown_event()`
+
+如果KEYUP, 移动标志改为False
+
+#### `check_event()`
+
+检查以下事件并响应:
+
+1. 退出事件 -> 退出进程
+2. `KEYDOWN`事件 -> 移动标志为True
+3. `KEYUP`事件 -> 移动标志为False
+
+#### `blitme()`
+
+重绘以下内容:
+
+1. screen背景色填充
+2. 火箭重绘
+3. 最后绘制的元素总是显示在上
