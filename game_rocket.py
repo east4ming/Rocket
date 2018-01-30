@@ -22,12 +22,12 @@ def run_game():
 
     # 游戏主循环
     while True:
-        gf.check_events(rocket)
+        gf.check_events(screen, rkt_settings, rocket)
         # 响应箭头, 移动火箭
         rocket.move_rocket(rkt_settings)
         # 如果`screen.fill(rkt_settings.bg_color)`这一句放在`check_events()`的for循环里, 就会出现火箭残影
         # 重绘函数
-        gf.blime(screen, rkt_settings, rocket)
+        gf.blime(rocket)
 
 
 run_game()

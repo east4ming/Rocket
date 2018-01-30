@@ -31,7 +31,7 @@ def keydown_event(event, rocket):
         rocket.move_right_flag = False
 
 
-def check_events(rocket):
+def check_events(screen, rkt_settings, rocket):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -39,11 +39,10 @@ def check_events(rocket):
             keyup_event(event, rocket)
         elif event.type == pygame.KEYUP:
             keydown_event(event, rocket)
+        screen.fill(rkt_settings.bg_color)
 
-
-def blime(screen, rkt_settings, rocket):
+def blime(rocket):
     """重绘所有对象."""
-    screen.fill(rkt_settings.bg_color)
     # 绘制火箭
     rocket.blitme()
     pygame.display.flip()
