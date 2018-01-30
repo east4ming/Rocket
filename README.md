@@ -46,3 +46,17 @@ A Game. There is a rocket on the center of the screen. Player control the rocket
 
 - 初始化rocket对象
 - 在循环中重绘rocket
+
+## 重构
+
+### 第一次重构
+
+配置放到单独文件中`settings.py`
+1. screen参数:
+    - width
+    - height
+    - bg_color
+2. ...
+
+## 火箭移动
+
