@@ -7,7 +7,7 @@
 """
 
 import pygame
-from settings import Settings
+# from settings import Settings
 
 
 class Rocket():
@@ -26,19 +26,17 @@ class Rocket():
         self.move_down_flag = False
         self.move_left_flag = False
         self.move_right_flag = False
-        # 火箭速度
-        self.rocket_spd = 1
 
     def blitme(self):
         """绘制火箭."""
         self.screen.blit(self.image, self.rect)
 
-    def move_rocket(self):
+    def move_rocket(self, rkt_settings):
         if self.move_up_flag and self.rect.top > 0:
-            self.rect.centery -= self.rocket_spd
-        elif self.move_down_flag and self.rect.bottom < Settings().screen_height:
-            self.rect.centery += self.rocket_spd
+            self.rect.centery -= rkt_settings.rocket_spd
+        elif self.move_down_flag and self.rect.bottom < rkt_settings.screen_height:
+            self.rect.centery += rkt_settings.rocket_spd
         elif self.move_left_flag and self.rect.left > 0:
-            self.rect.centerx -= self.rocket_spd
-        elif self.move_right_flag and self.rect.right < Settings().screen_width:
-            self.rect.centerx += self.rocket_spd
+            self.rect.centerx -= rkt_settings.rocket_spd
+        elif self.move_right_flag and self.rect.right < rkt_settings.screen_width:
+            self.rect.centerx += rkt_settings.rocket_spd

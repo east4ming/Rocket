@@ -7,50 +7,27 @@
 """
 
 import pygame
-import sys
 
 from rocket import Rocket
 from settings import Settings
+import game_functions as gf
 
 def run_game():
     pygame.init()
     rkt_settings = Settings()
     screen = pygame.display.set_mode((rkt_settings.screen_width, rkt_settings.screen_height))
-    pygame.display.set_caption('Rocket')
+    pygame.display.set_caption('CASEY ROCKET')
     # 初始化火箭对象
     rocket = Rocket(screen)
 
-
     # 游戏主循环
     while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-            # 代码太长, 待优化
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
-                    rocket.move_up_flag = True
-                elif event.key == pygame.K_DOWN:
-                    rocket.move_down_flag = True
-                elif event.key == pygame.K_LEFT:
-                    rocket.move_left_flag = True
-                elif event.key == pygame.K_RIGHT:
-                    rocket.move_right_flag = True
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_UP:
-                    rocket.move_up_flag = False
-                elif event.key == pygame.K_DOWN:
-                    rocket.move_down_flag = False
-                elif event.key == pygame.K_LEFT:
-                    rocket.move_left_flag = False
-                elif event.key == pygame.K_RIGHT:
-                    rocket.move_right_flag = False
-            screen.fill(rkt_settings.bg_color)
+        gf.check_events(rocket)
         # 响应箭头, 移动火箭
-        rocket.move_rocket()
-        # 绘制火箭
-        rocket.blitme()
-        pygame.display.flip()
+        rocket.move_rocket(rkt_settings)
+        # 如果`screen.fill(rkt_settings.bg_color)`这一句放在`check_events()`的for循环里, 就会出现火箭残影
+        # 重绘函数
+        gf.blime(screen, rkt_settings, rocket)
 
 
 run_game()

@@ -13,4 +13,5 @@ class Settings():
         self.screen_width = 800
         self.screen_height = 600
         self.bg_color = (230, 230, 230)
-        # rocket init
+        # 火箭速度
+        self.rocket_spd = 1
