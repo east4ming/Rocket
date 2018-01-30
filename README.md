@@ -1,6 +1,11 @@
 # Rocket
 A Game. There is a rocket on the center of the screen. Player control the rocket to move up/down/left/right. And make sure the rocket can't move to the outside of the screen.
 
+> 亮瞎你钛合金狗眼的Casey Rocket飞行
+> 背景颜色随机
+> 增加 time.sleep(0.3) 来让颜色变得慢一点
+> 增大rocket speed来让它移动快一点
+
 ## 游戏设计
 
 - 一个Screen(有背景)

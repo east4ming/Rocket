@@ -7,7 +7,8 @@
 
 import pygame
 import sys
-
+import random
+import time
 
 def keyup_event(event, rocket):
     if event.key == pygame.K_UP:
@@ -41,9 +42,9 @@ def check_events(rocket):
             keydown_event(event, rocket)
 
 
-def blime(screen, rkt_settings, rocket):
+def blitme(screen, rocket):
     """重绘所有对象."""
-    screen.fill(rkt_settings.bg_color)
-    # 绘制火箭
+    time.sleep(0.3)
+    screen.fill((random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
     rocket.blitme()
     pygame.display.flip()
